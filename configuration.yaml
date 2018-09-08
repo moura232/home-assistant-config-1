@@ -1,0 +1,121 @@
+homeassistant:
+  name: Home
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 0
+  unit_system: metric
+  time_zone: Europe/Berlin
+  customize: !include customize.yaml
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+sensor: !include sensors.yaml
+
+frontend:
+
+config:
+
+http:
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
+
+updater:
+   include_used_components: true
+
+discovery:
+
+conversation:
+
+history:
+
+logbook:
+
+sun:
+
+tts:
+  - platform: google
+
+media_player:
+  - platform: samsungtv
+    host: !secret samsungtv_ip
+    port: !secret samsungtv_port
+  - platform: cast
+
+shopping_list:
+
+emulated_hue:
+    host_ip: !secret host
+    entities:
+        light.kitchen:
+          name: "Kitchen light"
+        light.kitchen_2:
+          name: "TV light"
+
+cloud:
+    alexa:
+        filter:
+          include_entities:
+            - light.kitchen # tv
+            - light.kitchen_2 # dinner table
+        entity_config:
+          light.kitchen:
+            name: TV light
+            description: The light over the tv
+            display_categories: LIGHT
+          light.kitchen_2:
+            name: Kitchen light
+            description: The Kitchen light
+            display_categories: LIGHT
+
+device_tracker:
+  - platform: netgear
+    host: !secret desktop
+    username: homeassistant
+    password: !secret linux_password
+    new_device_defaults:
+      track_new_devices: True
+      hide_if_away: False
+
+panel_iframe:
+  configurator:
+    title: 'Configurator'
+    url: !secret configurator
+    icon: mdi:wrench
+
+weblink:
+  entities:
+    - name: Router
+      url: !secret router_url
+      icon: mdi:router-wireless
+
+google:
+  client_id: !secret google_client_id
+  client_secret: !secret google_client_key
+
+ecovacs:
+  username: !secret ecovacs_username
+  password: !secret ecovacs_password
+  country: de
+  continent: eu
+
+# logger:
+#   logs:
+#     homeassistant.components.ecovacs: debug
+#     homeassistant.components.vacuum.ecovacs: debug
+#     sucks: debug
+#     sensors.shopping_list: debug
+
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_api_key
+    allowed_chat_ids:
+      - !secret telegram_ana
+      - !secret telegram_mateus
+
+notify:
+  - name: telegram
+    platform: telegram
+    chat_id: !secret telegram_ana

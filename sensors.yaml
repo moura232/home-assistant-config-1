@@ -1,0 +1,31 @@
+- platform: darksky
+  api_key: !secret darksky_api_key
+  monitored_conditions:
+    - precip_probability
+    - temperature
+
+- platform: speedtest
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
+- platform: deutsche_bahn
+  from: Samariterstr. (U), Berlin
+  to: Bernauer Str. (U), Berlin
+  
+- platform: deutsche_bahn
+  from: 10247 Berlin, Kreutzigerstraße 4
+  to: 10117 Berlin, Oranienburger Straße 48
+
+- platform: fastdotcom
+
+- platform: worldclock
+  time_zone: America/Fortaleza
+
+- platform: worldclock
+  time_zone: Europe/Berlin
+
+- platform: command_line
+  name: shopping_list
+  command: "python3 /config/shopping_list.py"
