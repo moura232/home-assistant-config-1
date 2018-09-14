@@ -1,14 +1,10 @@
-sensor.worldclock_sensor:
-  friendly_name: Brasil
-
-sensor.worldclock_sensor_2:
-  friendly_name: Berlin
-
 sensor.dark_sky_precip_probability:
   friendly_name: Precip Probability
-
 sensor.dark_sky_temperature:
   friendly_name: Temperature
-
 sensor.samariterstr_u_berlin_to_bernauer_str_u_berlin:
   friendly_name: Home to Thermondo
+sensor.worldclock_sensor_2:
+  friendly_name: Brasil
+sensor.worldclock_sensor:
+  friendly_name: Berlin

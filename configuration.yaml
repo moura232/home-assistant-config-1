@@ -7,10 +7,10 @@ homeassistant:
   unit_system: metric
   time_zone: Europe/Berlin
   customize: !include customize.yaml
+  automation: !include automations.yaml
+  script: !include scripts.yaml
 
 group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
 scene: !include scenes.yaml
 sensor: !include sensors.yaml
 
@@ -19,6 +19,7 @@ frontend:
 config:
 
 http:
+    api_password: !secret api_password
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   # base_url: example.duckdns.org:8123
 
@@ -84,6 +85,10 @@ panel_iframe:
     title: 'Configurator'
     url: !secret configurator
     icon: mdi:wrench
+  configurator:
+    title: 'Lovelace'
+    url: !secret lovelace
+    icon: mdi:heart
 
 weblink:
   entities:
@@ -116,6 +121,28 @@ telegram_bot:
       - !secret telegram_mateus
 
 notify:
-  - name: telegram
+  - name: telegram_ana
     platform: telegram
     chat_id: !secret telegram_ana
+  - name: telegram_mateus
+    platform: telegram
+    chat_id: !secret telegram_mateus
+
+light:
+  - platform: group
+    name: Living room lights
+    entities:
+      - light.kitchen
+      - light.kitchen_2
+
+influxdb:
+  host: !secret influxdb_host
+  port: !secret influxdb_port
+  database: !secret influxdb_database
+  username: !secret influxdb_username
+  password: !secret influxdb_password
+  max_retries: 3
+  default_measurement: state
+
+weather:
+  - platform: yweather

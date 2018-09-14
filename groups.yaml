@@ -1,0 +1,57 @@
+essential:
+    name: Essential
+    view: yes
+    icon: mdi:home-heart
+    entities:
+      - group.all_lights
+      - group.all_devices
+      - sensor.worldclock_sensor_2
+      - sensor.worldclock_sensor
+      - sensor.shopping_list
+living_room:
+    name: Living Room
+    view: yes
+    icon: mdi:movie
+    entities:
+      - media_player.samsung_tv_remote
+      - light.kitchen
+      - light.kitchen_2
+automation:
+    name: Automation
+    view: yes
+    icon: mdi:robot
+    entities:
+      - group.all_automations
+      - group.all_devices
+ana:
+    name: Ana stuff
+    view: yes
+    icon: mdi:mushroom-outline
+    entities:
+      - sensor.samariterstr_u_berlin_to_bernauer_str_u_berlin
+      - calendar.ana_paula_gomes
+      - calendar.anagomesthermondode
+      - calendar.holidays_in_brazil
+      - calendar.holidays_in_germany
+mateus:
+    name: Mateus stuff
+    view: yes
+    icon: mdi:skull
+weather:
+    name: Weather
+    view: yes
+    icon: mdi:weather-pouring
+    entities:
+      - sun.sun
+      - sensor.dark_sky_temperature
+      - sensor.dark_sky_precip_probability
+hackeragem:
+    name: Hackeragem
+    view: yes
+    icon: mdi:wifi-strength-outline
+    entities:
+      - sensor.fastcom_download
+      - sensor.speedtest_download
+      - sensor.speedtest_ping
+      - sensor.speedtest_upload
+      - weblink.router

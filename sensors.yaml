@@ -14,9 +14,9 @@
   from: Samariterstr. (U), Berlin
   to: Bernauer Str. (U), Berlin
   
-- platform: deutsche_bahn
-  from: 10247 Berlin, Kreutzigerstraße 4
-  to: 10117 Berlin, Oranienburger Straße 48
+# - platform: deutsche_bahn
+#   from: Samariterstr. (U), Berlin
+#   to: Oranienburger Str. (S), Berlin
 
 - platform: fastdotcom
 
@@ -29,3 +29,13 @@
 - platform: command_line
   name: shopping_list
   command: "python3 /config/shopping_list.py"
+
+- platform: alpha_vantage
+  api_key: !secret alpha_vantage_api_key
+  foreign_exchange:
+  - from: EUR
+    to: BRL
+    name: Euro/Real
+  - from: BTC
+    to: BRL
+    name: Bitcoin/Real

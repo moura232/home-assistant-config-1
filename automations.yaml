@@ -31,7 +31,9 @@
     - platform: state
       entity_id: sensor.shopping_list
   action:
-    service: notify.telegram
+    service:
+    - notify.telegram_ana
+    - notify.telegram_mateus
     data_template:
       message: >
         Nossa lista de compras foi atualizada!
