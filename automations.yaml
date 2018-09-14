@@ -1,41 +1,36 @@
-- alias: "Media player paused/stopped"
+- alias: Media player paused/stopped
+  id: media_player_paused_stoped
   trigger:
-      - platform: state
-        entity_id: media_player.samsung_tv_remote
-        from: 'playing'
-        to: 'idle'
+  - platform: state
+    entity_id: media_player.samsung_tv_remote
+    from: playing
+    to: idle
   condition:
-      - condition: state
-        entity_id: sun.sun
-        state: 'below_horizon'
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
   action:
     service: scene.turn_on
     entity_id: scene.livingroom_normal
-
-- alias: "Media player playing"
+- alias: Media player playing
+  id: media_player_playing
   trigger:
-      - platform: state
-        entity_id: media_player.samsung_tv_remote
-        to: 'playing'
-        from: 'idle'
+  - platform: state
+    entity_id: media_player.samsung_tv_remote
+    to: playing
+    from: idle
   condition:
-      - condition: state
-        entity_id: sun.sun
-        state: 'below_horizon'
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
   action:
     service: scene.turn_on
     entity_id: scene.livingroom_dim
-
-- alias: "Notify when add item"
+- id: notify_when_add_item_to_shopping_list
+  alias: Notify when add item
   trigger:
-    - platform: state
-      entity_id: sensor.shopping_list
+  - entity_id: sensor.shopping_list
+    platform: state
   action:
-    service:
-    - notify.telegram_ana
-    - notify.telegram_mateus
-    data_template:
-      message: >
-        Nossa lista de compras foi atualizada!
-        
-        {{states.sensor.shopping_list.state}}
+  - entity_id: script.notify_on_telegram
+    service: script.reload

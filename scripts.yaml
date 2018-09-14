@@ -1,0 +1,14 @@
+notify_on_telegram:
+  sequence:
+  - service: notify.telegram_ana
+    data_template:
+      message: >
+          Nossa lista de compras foi atualizada!
+        
+          {{states.sensor.shopping_list.state}}
+  - service: notify.telegram_mateus
+    data_template:
+      message: >
+          Nossa lista de compras foi atualizada!
+        
+          {{states.sensor.shopping_list.state}}

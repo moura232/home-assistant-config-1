@@ -13,32 +13,31 @@ views:
         card:
           type: glance 
           title: Living Room Lights
+      - type: vertical-stack
+        cards:
+          - type: glance
+            title: World Clock
+            entities:
+              - entity: sensor.worldclock_sensor_2
+                name: Brasil
+              - entity: sensor.worldclock_sensor
+                name: Berlin
+          - type: glance
+            title: Currencies
+            entities:
+              - entity: sensor.euroreal
+                name: Reais
+              - entity: sensor.bitcoinreal
+                name: Reais
+              - entity: sensor.bitcoineuro
+                name: Euros
       - type: glance
-        title: World Clock
+        title: Home to Work
         entities:
-          - entity: sensor.worldclock_sensor_2
-            name: Brasil
-          - entity: sensor.worldclock_sensor
-            name: Berlin
-      - type: entities
-        title: Weather
-        entities:
-          - entity: sun.sun
-          - entity: sensor.dark_sky_temperature
-          - entity: sensor.dark_sky_precip_probability
-      - type: media-control
-        entity: media_player.samsung_tv_remote
-      - type: conditional
-        conditions:
-            - entity: media_player.samsung_tv_remote
-              state: "on"
-        card:
-          type: entities
-          entity: media_player.cantincast
-    #   - type: weather-forecast
-    #     entity: weather.dark_sky
+          - entity: sensor.samariterstr_u_berlin_to_bernauer_str_u_berlin
+            name: Thermondo
+      - type: weather-forecast
+        entity: weather.weather
       - type: iframe
-        url: http://192.168.0.8:8123/shopping-list
+        url: !secret shopping_list
         aspect_ratio: 100%
-
-
