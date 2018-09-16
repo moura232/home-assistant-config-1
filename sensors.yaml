@@ -42,3 +42,8 @@
   - from: BTC
     to: BRL
     name: Bitcoin/Real
+
+- platform: time_date
+  display_options:
+    - 'date_time'
+    - 'time_date'

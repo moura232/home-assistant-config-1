@@ -5,6 +5,8 @@ sensor.dark_sky_temperature:
 sensor.samariterstr_u_berlin_to_bernauer_str_u_berlin:
   friendly_name: Home to Thermondo
 sensor.worldclock_sensor_2:
-  friendly_name: Brasil
+  friendly_name: Berlinda
+  icon: mdi:home
 sensor.worldclock_sensor:
-  friendly_name: Berlin
+  friendly_name: Br
+  icon: mdi:heart

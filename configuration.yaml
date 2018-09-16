@@ -44,8 +44,9 @@ cast:
 
 media_player:
   - platform: samsungtv
-    host: !secret samsungtv_ip
-    port: !secret samsungtv_port
+    host: !secret samsung_tv_ip
+    port: !secret samsung_tv_port
+    mac: !secret samsung_tv_mac
 
 shopping_list:
 
@@ -120,13 +121,6 @@ notify:
   - name: telegram_mateus
     platform: telegram
     chat_id: !secret telegram_mateus
-
-light:
-  - platform: group
-    name: Living room lights
-    entities:
-      - light.kitchen
-      - light.kitchen_2
 
 influxdb:
   host: !secret influxdb_host

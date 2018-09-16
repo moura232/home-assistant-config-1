@@ -3,31 +3,25 @@
   trigger:
   - platform: state
     entity_id: media_player.samsung_tv_remote
-    from: playing
-    to: idle
-  condition:
-  - condition: state
-    entity_id: sun.sun
-    state: below_horizon
+    from: 'on'
+    to: 'off'
   action:
-    service: scene.turn_on
-    entity_id: scene.livingroom_normal
+    service: homeassistant.turn_on
+    entity_id: group.living_room
+
 - alias: Media player playing
   id: media_player_playing
   trigger:
   - platform: state
     entity_id: media_player.samsung_tv_remote
-    to: playing
-    from: idle
-  condition:
-  - condition: state
-    entity_id: sun.sun
-    state: below_horizon
+    from: 'off'
+    to: 'on'
   action:
-    service: scene.turn_on
-    entity_id: scene.livingroom_dim
-- id: notify_when_add_item_to_shopping_list
-  alias: Notify when add item
+    service: homeassistant.turn_off
+    entity_id: group.living_room
+
+- alias: Notify when add item
+  id: notify_when_add_item_to_shopping_list
   trigger:
   - entity_id: sensor.shopping_list
     platform: state

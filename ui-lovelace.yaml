@@ -18,10 +18,8 @@ views:
           - type: glance
             title: World Clock
             entities:
-              - entity: sensor.worldclock_sensor_2
-                name: Brasil
               - entity: sensor.worldclock_sensor
-                name: Berlin
+                name: Brasil
           - type: glance
             title: Currencies
             entities:
@@ -38,6 +36,11 @@ views:
             name: Thermondo
       - type: weather-forecast
         entity: weather.weather
-      - type: iframe
-        url: !secret shopping_list
-        aspect_ratio: 100%
+      - type: vertical-stack
+        cards:
+          - type: iframe
+            url: !secret shopping_list
+            aspect_ratio: 100%
+          - type: entities
+            entities:
+              - sensor.date__time
