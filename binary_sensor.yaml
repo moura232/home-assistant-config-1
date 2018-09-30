@@ -1,0 +1,16 @@
+- platform: template
+  sensors:
+    vacuum_filter_replace:
+      friendly_name: "Vacuum Filter"
+      device_class: problem
+      value_template: "{{ state_attr('vacuum.e0001067917610621490', 'component_filter') <= 5 }}"
+
+- platform: ping
+  host: !secret radio_ip
+  name: Radio
+  scan_interval: 600
+
+- platform: ping
+  host: !secret desktop_ip
+  name: Desktop
+  scan_interval: 600
