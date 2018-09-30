@@ -15,25 +15,25 @@ views:
           title: Living Room Lights
       - type: vertical-stack
         cards:
-          - type: glance
+          - type: entities
             title: World Clock
             entities:
               - entity: sensor.worldclock_sensor
                 name: Brasil
-          - type: glance
+          - type: entities
             title: Currencies
             entities:
               - entity: sensor.euroreal
-                name: Reais
+                name: Euro/Real
               - entity: sensor.bitcoinreal
-                name: Reais
+                name: Bitcoin/Real
               - entity: sensor.bitcoineuro
-                name: Euros
-      - type: glance
-        title: Home to Work
+                name: Bitcoin/Euro
+      - type: entities
+        title: Cleaning
         entities:
-          - entity: sensor.samariterstr_u_berlin_to_bernauer_str_u_berlin
-            name: Thermondo
+          - entity: vacuum.e0001067917610621490
+            name: Bobby
       - type: weather-forecast
         entity: weather.weather
       - type: vertical-stack
