@@ -78,6 +78,10 @@ panel_iframe:
     title: 'Configurator'
     url: !secret configurator
     icon: mdi:wrench
+  terminal:
+    title: Terminal
+    icon: mdi:console
+    url: !secret terminal_address
 
 weblink:
   entities:
