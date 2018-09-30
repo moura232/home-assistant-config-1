@@ -14,6 +14,7 @@ script: !include scripts.yaml
 group: !include groups.yaml
 scene: !include scenes.yaml
 sensor: !include sensors.yaml
+binary_sensor: !include binary_sensor.yaml
 
 frontend:
 
@@ -21,8 +22,6 @@ config:
 
 http:
     api_password: !secret api_password
-  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-  # base_url: example.duckdns.org:8123
 
 updater:
    include_used_components: true
@@ -79,10 +78,6 @@ panel_iframe:
     title: 'Configurator'
     url: !secret configurator
     icon: mdi:wrench
-#   lovelace:
-#     title: 'Lovelace'
-#     url: !secret lovelace
-#     icon: mdi:heart
 
 weblink:
   entities:
@@ -99,13 +94,6 @@ ecovacs:
   password: !secret ecovacs_password
   country: de
   continent: eu
-
-# logger:
-#   logs:
-#     homeassistant.components.ecovacs: debug
-#     homeassistant.components.vacuum.ecovacs: debug
-#     sucks: debug
-#     sensors.shopping_list: debug
 
 telegram_bot:
   - platform: polling
@@ -134,3 +122,10 @@ influxdb:
 weather:
   - platform: yweather
     name: Weather
+
+# logger:
+#   logs:
+#     homeassistant.components.ecovacs: debug
+#     homeassistant.components.vacuum.ecovacs: debug
+#     sucks: debug
+#     sensors.shopping_list: debug

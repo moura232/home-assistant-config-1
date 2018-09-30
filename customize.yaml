@@ -8,5 +8,5 @@ sensor.worldclock_sensor_2:
   friendly_name: Berlinda
   icon: mdi:home
 sensor.worldclock_sensor:
-  friendly_name: Br
+  friendly_name: Brasil
   icon: mdi:heart

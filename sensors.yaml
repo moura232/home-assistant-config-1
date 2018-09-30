@@ -11,12 +11,8 @@
     - upload
 
 - platform: deutsche_bahn
-  from: Samariterstr. (U), Berlin
-  to: Bernauer Str. (U), Berlin
-  
-# - platform: deutsche_bahn
-#   from: Samariterstr. (U), Berlin
-#   to: Oranienburger Str. (S), Berlin
+  from: !secret from_station
+  to: !secret to_station
 
 - platform: fastdotcom
 
