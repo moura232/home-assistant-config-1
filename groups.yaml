@@ -55,3 +55,10 @@ hackeragem:
       - sensor.speedtest_ping
       - sensor.speedtest_upload
       - weblink.router
+living_room_lights:
+    name: Living Room Lights
+    view: no
+    icon: mdi:light
+    entities:
+      - light.kitchen
+      - light.kitchen_2

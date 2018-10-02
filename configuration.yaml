@@ -43,6 +43,7 @@ cast:
 
 media_player:
   - platform: samsungtv
+    timeout: 5
     host: !secret samsung_tv_ip
     port: !secret samsung_tv_port
     mac: !secret samsung_tv_mac
@@ -82,6 +83,10 @@ panel_iframe:
     title: Terminal
     icon: mdi:console
     url: !secret terminal_address
+  logviewer:
+    title: Logs
+    icon: mdi:file-document-box-outline
+    url: !secret logviewer_address
 
 weblink:
   entities:
@@ -127,8 +132,9 @@ weather:
   - platform: yweather
     name: Weather
 
-# logger:
-#   logs:
+logger:
+  logs:
+    media_player.samsung_tv_remote: debug
 #     homeassistant.components.ecovacs: debug
 #     homeassistant.components.vacuum.ecovacs: debug
 #     sucks: debug

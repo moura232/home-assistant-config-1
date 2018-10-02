@@ -3,6 +3,7 @@
   monitored_conditions:
     - precip_probability
     - temperature
+    - precip_intensity
 
 - platform: speedtest
   monitored_conditions:

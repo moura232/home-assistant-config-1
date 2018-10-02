@@ -3,12 +3,12 @@ notify_on_telegram:
   - service: notify.telegram_ana
     data_template:
       message: >
-          Nossa lista de compras foi atualizada!
-        
-          {{states.sensor.shopping_list.state}}
+          {{ title }}
+
+          {{ message }}
   - service: notify.telegram_mateus
     data_template:
       message: >
-          Nossa lista de compras foi atualizada!
-        
-          {{states.sensor.shopping_list.state}}
+          {{ title }}
+
+          {{ message }}
