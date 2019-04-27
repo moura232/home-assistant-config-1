@@ -17,11 +17,12 @@ sensor: !include sensors.yaml
 binary_sensor: !include binary_sensor.yaml
 
 frontend:
+    themes:
+        midnight: !include theme_midnight.yaml
 
 config:
 
 http:
-    api_password: !secret api_password
 
 updater:
    include_used_components: true
@@ -36,17 +37,12 @@ logbook:
 
 sun:
 
-tts:
-  - platform: google
-
-cast:
-
 media_player:
   - platform: samsungtv
-    timeout: 5
     host: !secret samsung_tv_ip
     port: !secret samsung_tv_port
     mac: !secret samsung_tv_mac
+    timeout: 5
 
 shopping_list:
 
@@ -58,41 +54,31 @@ emulated_hue:
         light.kitchen_2:
           name: "TV light"
 
-cloud:
-    alexa:
-        filter:
-          include_entities:
-            - light.kitchen # tv
-            - light.kitchen_2 # dinner table
-        entity_config:
-          light.kitchen:
-            name: TV light
-            description: The light over the tv
-            display_categories: LIGHT
-          light.kitchen_2:
-            name: Kitchen light
-            description: The Kitchen light
-            display_categories: LIGHT
-
 panel_iframe:
-  configurator:
-    title: 'Configurator'
-    url: !secret configurator
-    icon: mdi:wrench
-  terminal:
-    title: Terminal
-    icon: mdi:console
-    url: !secret terminal_address
   logviewer:
     title: Logs
     icon: mdi:file-document-box-outline
     url: !secret logviewer_address
+
+panel_custom:
+  - name: hassio-main
+    sidebar_title: Configurator
+    sidebar_icon: hass:settings
+    js_url: /api/hassio/app/entrypoint.js
+    url_path: configurator
+    embed_iframe: true
+    require_admin: true
+    config:
+      ingress: core_configurator
 
 weblink:
   entities:
     - name: Router
       url: !secret router_url
       icon: mdi:router-wireless
+    - name: Dashboard
+      url: !secret lovelace
+      icon: mdi:desktop-mac-dashboard
 
 google:
   client_id: !secret google_client_id
@@ -129,8 +115,19 @@ influxdb:
   default_measurement: state
 
 weather:
-  - platform: yweather
-    name: Weather
+  - platform: darksky
+    api_key: !secret darksky_api_key
+
+mqtt:
+  password: !secret mqtt_password
+  discovery: true
+  discovery_prefix: homeassistant
+  birth_message:
+    topic: 'hass/status'
+    payload: 'online'
+  will_message:
+    topic: 'hass/status'
+    payload: 'offline'
 
 logger:
   logs:
@@ -139,3 +136,7 @@ logger:
 #     homeassistant.components.vacuum.ecovacs: debug
 #     sucks: debug
 #     sensors.shopping_list: debug
+
+fastdotcom:
+
+system_health:
