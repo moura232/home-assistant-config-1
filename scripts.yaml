@@ -12,3 +12,40 @@ notify_on_telegram:
           {{ title }}
 
           {{ message }}
+
+netflix:  # from https://community.home-assistant.io/t/samsung-smart-tv-no-control/32914/26
+  sequence:
+  - data:
+      entity_id: media_player.samsung_tv_remote
+      key_code: 'KEY_EXIT'
+    service: media_player.send_key
+  - delay:
+      milliseconds: 100
+  - data:
+      entity_id: media_player.samsung_tv_remote
+      key_code: 'KEY_HOME'
+    service: media_player.send_key
+  - delay:
+      milliseconds: 100
+  - data:
+      entity_id: media_player.samsung_tv_remote
+      key_code: 'KEY_RIGHT'
+    service: media_player.send_key
+  - delay:
+      milliseconds: 100
+  - data:
+      entity_id: media_player.samsung_tv_remote
+      key_code: 'KEY_RIGHT'
+    service: media_player.send_key
+  - delay:
+      milliseconds: 100
+  - data:
+      entity_id: media_player.samsung_tv_remote
+      key_code: 'KEY_RIGHT'
+    service: media_player.send_key
+  - delay:
+      milliseconds: 100
+  - data:
+      entity_id: media_player.samsung_tv_remote
+      key_code: 'KEY_ENTER'
+    service: media_player.send_key

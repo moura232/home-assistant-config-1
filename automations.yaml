@@ -42,61 +42,24 @@
       title: 'Melhor pegar o guarda-chuvas...️'
       message: '{{ states.sensor.dark_sky_precip_probability.state }}% de probabilidade de chuva.'
 
-- alias: Notify when tablet needs to be charged
-  id: notify_when_tablet_needs_to_be_charged
+- alias: Notify when tablet needs to be charged (30%)
+  id: notify_when_tablet_needs_to_be_charged_30
   trigger:
   - platform: template
-    value_template: "{% if states.sensor.wallpanel_battery_level.state | float <= 20.0 %} true {% endif %}"
+    value_template: "{% if states.sensor.wallpanel_battery_level.state | float <= 30.0 %} true {% endif %}"
   action:
   - service: script.notify_on_telegram
     data:
       title: 'Hora de recarregar o tablet.'
       message: '{{ states.sensor.wallpanel_battery_level.state }}%'
 
-- alias: Notify when tablet needs to be charged
-  id: notify_when_tablet_needs_to_be_charged
+- alias: Notify when tablet needs to be charged (15%)
+  id: notify_when_tablet_needs_to_be_charged_15
   trigger:
   - platform: template
-    value_template: "{% if states.sensor.wallpanel_battery_level.state | float <= 10.0 %} true {% endif %}"
+    value_template: "{% if states.sensor.wallpanel_battery_level.state | float <= 15.0 %} true {% endif %}"
   action:
   - service: script.notify_on_telegram
     data:
       title: 'A bateria do tablet está acabando!'
       message: '{{ states.sensor.wallpanel_battery_level.state }}%'
-
-- alias: Netflix  # from https://community.home-assistant.io/t/samsung-smart-tv-no-control/32914/26
-  sequence:
-  - data:
-      entity_id: media_player.samsung_tv_remote
-      key_code: 'KEY_EXIT'
-    service: media_player.send_key
-  - delay:
-      milliseconds: 100
-  - data:
-      entity_id: media_player.samsung_tv_remote
-      key_code: 'KEY_HOME'
-    service: media_player.send_key
-  - delay:
-      milliseconds: 100
-  - data:
-      entity_id: media_player.samsung_tv_remote
-      key_code: 'KEY_RIGHT'
-    service: media_player.send_key
-  - delay:
-      milliseconds: 100
-  - data:
-      entity_id: media_player.samsung_tv_remote
-      key_code: 'KEY_RIGHT'
-    service: media_player.send_key
-  - delay:
-      milliseconds: 100
-  - data:
-      entity_id: media_player.samsung_tv_remote
-      key_code: 'KEY_RIGHT'
-    service: media_player.send_key
-  - delay:
-      milliseconds: 100
-  - data:
-      entity_id: media_player.samsung_tv_remote
-      key_code: 'KEY_ENTER'
-    service: media_player.send_key
