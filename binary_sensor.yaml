@@ -14,3 +14,10 @@
   host: !secret desktop_ip
   name: Desktop
   scan_interval: 600
+
+- platform: mqtt
+  state_topic: "homeassistant/mywallpanel/sensor/motion"
+  name: "Motion (tablet)"
+  payload_on: '{"value":true}'
+  payload_off: '{"value":false}'
+  device_class: motion

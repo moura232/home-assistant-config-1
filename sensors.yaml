@@ -5,27 +5,11 @@
     - temperature
     - precip_intensity
 
-- platform: speedtest
-  monitored_conditions:
-    - ping
-    - download
-    - upload
-
-- platform: deutsche_bahn
-  from: !secret from_station
-  to: !secret to_station
-
-- platform: fastdotcom
-
 - platform: worldclock
   time_zone: America/Fortaleza
 
 - platform: worldclock
   time_zone: Europe/Berlin
-
-- platform: command_line
-  name: shopping_list
-  command: "python3 /config/shopping_list.py"
 
 - platform: alpha_vantage
   api_key: !secret alpha_vantage_api_key
@@ -33,14 +17,13 @@
   - from: EUR
     to: BRL
     name: Euro/Real
-  - from: BTC
-    to: EUR
-    name: Bitcoin/Euro
-  - from: BTC
-    to: BRL
-    name: Bitcoin/Real
 
 - platform: time_date
   display_options:
-    - 'date_time'
     - 'time_date'
+
+- platform: mqtt
+  state_topic: "homeassistant/mywallpanel/sensor/battery"
+  name: "WallPanel Battery Level"
+  unit_of_measurement: "%"
+  value_template: '{{ value_json.value }}'
